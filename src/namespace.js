@@ -88,10 +88,10 @@ reserved : function(){
 */
 createClass : function(className, object, isSingleton){
 	//check object already exist
-	if(root[className]){return false}
-	
+	if(root[className]){return false};
+	if(typeof object !== "function"){return false};
+
 	if(isSingleton===true){
-		if(typeof object !== "function"){return false};
 		root[className] = function(){
 			var _instance = null;
 			
