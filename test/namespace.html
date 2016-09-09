@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head prefix="og: http://ogp.me/ns#">
+<meta charset="UTF-8" />
+<title>ExployderJS Namespace test</title>
+
+<link rel="stylesheet" href="css/mocha.css" />
+<script src="js/chai.js" type="text/javascript"></script>
+<script src="js/mocha.js" type="text/javascript"></script>
+<script charset="utf-8">
+<!--
+// mochaの機能を呼び出します。ここでは、BDDとTDDを使用します。
+mocha.setup('bdd');
+mocha.setup('tdd');
+var assert = chai.assert;
+// expectの機能を読み込み
+var expect = chai.expect;
+// shouldの機能を読み込み
+chai.Should();
+-->
+</script>
+
+<script src="../lib/jquery-1.11.0.min.js" charset="utf-8"></script>
+<script src="../src/console_fix.js" charset="utf-8"></script>
+<script src="../src/namespace.js" charset="utf-8"></script>
+<script charset="utf-8">
+<!--
+describe('グローバルオブジェクト', function() {
+    it("デフォルトでグローバルオブジェクトExployderJSが存在する", function() {
+        expect(ExployderJS);
+    });
+    it("デフォルトでグローバルオブジェクトExが存在する", function() {
+        expect(Ex);
+    });
+    it("グローバルオブジェクトExはExployderJSを参照している", function() {
+        expect(Ex).to.eql(ExployderJS);
+    });
+    it("ExployderJSのメソッド(setAliasName)に任意の文字列（Hoge）を引数で与えると、グローバルオブジェクト（Hoge）が作成される", function() {
+        ExployderJS.setAliasName("Hoge");
+        expect(Hoge);
+    });
+    it("作成したグローバルオブジェクトHogeがExployderJSを参照している（エイリアス機能）", function() {
+        expect(Hoge).to.eql(ExployderJS);
+    });
+    it("ExployderJSを参照している全てのグローバルオブジェクトを配列で取得できる", function() {
+        var _aliasNames = ExployderJS.getAliasNames();
+        expect(_aliasNames).to.eql(['Ex','Hoge']);
+    });
+});
+
+describe('クラス', function() {
+    it("任意のグローバルオブオブジェクト（例えばEx）に任意の関数オブジェクトをぶら下げて任意の名前（例えばMyClass1）でアクセスできる", function() {
+        Ex.createClass("MyClass1",function(){
+            this.name = "class1";
+        });
+        expect(Ex.MyClass1);
+        var myClass1Ins = new Ex.MyClass1();
+        expect(myClass1Ins.name).to.equal("class1");
+    });
+    it("任意のグローバルオブオブジェクト（例えばEx）にObjectをぶら下げることができない", function() {
+        Ex.createClass("MyClass2",{});
+        expect(Ex.MyClass2).to.eql(undefined);
+    });
+    it("任意のグローバルオブオブジェクト（例えばEx）にArrayをぶら下げることができない", function() {
+        Ex.createClass("MyClass3",[]);
+        expect(Ex.MyClass3).to.eql(undefined);
+    });
+    it("任意のグローバルオブオブジェクト（例えばEx）にNumberをぶら下げることができない", function() {
+        Ex.createClass("MyClass4",3);
+        expect(Ex.MyClass4).to.eql(undefined);
+    });
+    it("任意のグローバルオブオブジェクト（例えばEx）にStringをぶら下げることができない", function() {
+        Ex.createClass("MyClass5","HogeHoge");
+        expect(Ex.MyClass5).to.eql(undefined);
+    });
+    it("任意のグローバルオブオブジェクト（例えばEx）に既に登録されている名前(MyClass1)で関数オブジェクトをぶら下げることはできない", function() {
+        Ex.createClass("MyClass1",function(){
+            this.name = "class2";
+        });
+        var myClass1Ins2 = new Ex.MyClass1();
+        expect(myClass1Ins2.name).to.equal("class1");
+    });
+});
+
+//run
+$(function() {
+    mocha.run();
+});
+-->
+</script>
+</head>
+
+<body>
+    <div id="mocha"></div>
+</body>        
+</html>
