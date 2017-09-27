@@ -3,7 +3,7 @@
  * 
  * @version 1.0.0
  */
-"use strict";
+// "use strict";
 (function(window, $, undefined){
 
 

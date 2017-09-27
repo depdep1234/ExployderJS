@@ -3,7 +3,7 @@
  * 
  * @version 1.0.0
  */
-"use strict";
+// "use strict";	
 (function(window, $, undefined){
 
 
@@ -25,12 +25,13 @@ var Linkage = function(){
 		/*
 		*	引数で渡された任意のHTML要素を対象にdata-ex-controller属性で指定されたコントローラーを紐付けます。
 		*/
-		bindController : function(element){
+		bindController : function(element, name){
 			var elements = $("[data-ex-controller]", element);
+			var num = elements.size();
 			if(element.attr("data-ex-controller")!==undefined){
 				elements.add(element);
 			}
-			elements.each(function(){
+			elements.each(function(elementIndex){
 				if(Ex.Controller.getInstance().find($(this))!==undefined){return};
 				var className = $(this).attr("data-ex-controller");
 				var length = className.split(".").length;
@@ -46,6 +47,10 @@ var Linkage = function(){
 					object.getInstance($(this));
 					object.getInstance($(this)).addAllEventListener();
 				}
+				
+				if(elementIndex===num-1){
+					$(exports).trigger(name + "_linkage_complete");
+				}
 			});
 		},
 		/*
@@ -60,6 +65,12 @@ var Linkage = function(){
 				if(Ex.Controller.getInstance().find($(this))===undefined){return};
 				Ex.Controller.getInstance().destroy($(this));
 			});
+		},
+		bind : function(eventName, listener){
+			$(exports).bind(eventName, listener);
+		},
+		unbind : function(eventName, listener){
+			$(exports).unbind(eventName, listener);
 		}
 	};
 	

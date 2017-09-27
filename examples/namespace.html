@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!--[if IE 9]>
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<![endif]-->
+<meta name="viewport" content="width=device-width, target-densitydpi=360, initial-scale=1,minimum-scale=1, maximum-scale=2 user-scalable=1;" />
+<meta charset="UTF-8" />
+<title>ExployderJS Examples</title>
+
+<link rel="stylesheet" type="text/css" href="../examples/css/reset.css">
+
+<script src="../src/console_fix.js" charset="utf-8"></script>
+<script src="../src/namespace.js" charset="utf-8"></script>
+<script src="../src/lib/jquery-1.8.2.min.js"></script>
+<script src="../src/util.js" charset="utf-8"></script>
+<script src="../src/queue.js" charset="utf-8"></script>
+<script src="../src/model.js" charset="utf-8"></script>
+<script src="../src/scene_manager.js" charset="utf-8"></script>
+<script src="../src/controller.js" charset="utf-8"></script>
+<script src="../src/linkage.js" charset="utf-8"></script>
+<script src="../src/state_machine.js" charset="utf-8"></script>
+<script src="./js/body_controller.js" charset="utf-8"></script>
+<script src="../src/logging.js" charset="utf-8"></script>
+
+<script charset="utf-8">
+"use strict";
+$(function(){
+
+	var _aliasName = ExployderJS.getAliasNames();
+	var log = Ex.Logging.getInstance();
+	var body = Ex.BodyController.getInstance($("body"));
+	body.addChild(log);
+	log.output(_aliasName);//["Ex"]
+	
+	Ex.setAliasName("Burning");
+	log.output(_aliasName);//["Ex","Burning"]
+	
+	var SomeClass = function(){
+		var exports = {
+			moonsaultPress : function(){
+				log.output("小橋ここでムーンサルト出したぁっ！");
+			}
+		};
+		return exports;
+	};
+	//Create Kobashi Class as Singleton
+	Burning.createClass("Kobashi", SomeClass, true);
+	log.output(Burning.reserved());//["getAliasNames", "setAliasName", "version", "reserved", "createClass", "Kobashi"]
+	
+	//Get a instance of Kobashi Class
+	var kobashi = Burning.Kobashi.getInstance();
+	kobashi.moonsaultPress();//小橋ここでムーンサルト出したぁっ！
+
+});	
+</script>
+
+</head>
+
+<body data-lr-controller="LR.BodyController">
+
+
+
+</body>
+</html>

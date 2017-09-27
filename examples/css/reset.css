@@ -1,0 +1,83 @@
+@charset "utf-8";
+/*------------------------------------------------
+
+	
+
+------------------------------------------------*/
+
+body,div,
+dl,dt,dd,ul,ol,li,
+h1,h2,h3,h4,h5,h6,
+pre,form,fieldset,
+p,blockquote{
+	margin: 0;
+	padding: 0;
+}
+th,td,
+h1,h2,h3,h4,h5,h6,
+p,blockquote,
+address {
+	font-size: 100%;
+	font-style: normal;
+}
+h1,h2,h3,h4,h5,h6,
+strong {
+	font-weight: bold;
+}
+em {
+	font-style: italic;
+}
+ol,ul,li {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+th,td {
+	vertical-align: top;
+	text-align: left;
+}
+a,
+img,
+a img {
+	border: 0;
+	outline: none;
+	text-decoration: none;
+}
+input {
+	line-height: 1.2;
+}
+input[type=text]{
+	
+}
+hr{
+	display: none;
+}
+iframe{
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+/* HTML5 New Elements
+------------------------------------------------*/
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section,
+canvas,video
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section,video
+{
+	display: block;
+}

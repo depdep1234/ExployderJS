@@ -3,7 +3,7 @@
  * 
  * @version 1.0.0
  */
-"use strict";
+// "use strict";
 (function(window, $, undefined){
 
 
@@ -74,6 +74,8 @@ var ResourceManager = function(){
 			switch(type){
 				case "image":
 					resource = _imageLoader.find(key);	//Model
+				case "image_data":
+					resource = _imageLoader.getImg(key);	//Model
 					break;
 				case "html":
 					resource = _htmlLoader.find(key);	//Model
