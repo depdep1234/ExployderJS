@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head prefix="og: http://ogp.me/ns#">
+<meta charset="UTF-8" />
+<title>ExployderJS Namespace test</title>
+
+<link rel="stylesheet" href="css/mocha.css" />
+<script src="js/chai.js" type="text/javascript"></script>
+<script src="js/mocha.js" type="text/javascript"></script>
+<script charset="utf-8">
+<!--
+// mochaの機能を呼び出します。ここでは、BDDとTDDを使用します。
+mocha.setup('bdd');
+mocha.setup('tdd');
+var assert = chai.assert;
+// expectの機能を読み込み
+var expect = chai.expect;
+// shouldの機能を読み込み
+chai.Should();
+-->
+</script>
+
+<script src="../src/lib/jquery-2.1.1.min.js" charset="utf-8"></script>
+<script src="../src/console_fix.js" charset="utf-8"></script>
+<script src="../src/namespace.js" charset="utf-8"></script>
+<script src="../src/util.js" charset="utf-8"></script>
+<script src="../src/pubsub.js" charset="utf-8"></script>
+<script charset="utf-8">
+<!--
+describe('', function() {
+     it("任意のオブジェクトに'pubsub'というオブジェクトを追加できる", function() {
+        var obj = {};
+        Ex.PubSub.getInstance().mixin(obj);
+        expect(obj.pubsub);
+
+    });
+     it("任意のオブジェクトに追加した'pubsub'というオブジェクトから'hoge'というカスタムイベントを発行できる", function() {
+        var obj = {};
+        Ex.PubSub.getInstance().mixin(obj);
+        obj.pubsub.bind("hoge", function(e,obj){
+            expect(obj);
+        });
+        obj.pubsub.trigger("hoge", {"test" : "test"});
+
+    });
+     it("購読したカスタムイベントが発行された際に、データを受け取ることができる", function() {
+        var obj = {};
+        Ex.PubSub.getInstance().mixin(obj);
+        obj.pubsub.bind("hoge", function(e, obj){
+            expect(obj.test).to.equal("test");
+        });
+        obj.pubsub.trigger("hoge", {"test" : "test"});
+
+    });
+     it("ひとつのカスタムイベントに複数のリスナを登録できる", function() {
+        var obj = {};
+        Ex.PubSub.getInstance().mixin(obj);
+
+        function hoge_1(e, obj){
+            expect(obj.test).to.equal("test");
+        }
+        function hoge_2(e, obj){
+            expect(obj.test).to.equal("test");
+        }
+
+        obj.pubsub.bind("hoge", hoge_1);
+        obj.pubsub.bind("hoge", hoge_2);
+        obj.pubsub.trigger("hoge", {"test" : "test"});
+
+    });
+     it("カスタムイベントに登録したリスナを削除できる", function() {
+        var obj = {};
+        Ex.PubSub.getInstance().mixin(obj);
+
+        function hoge_1(e, obj){
+            expect(obj.test).to.equal("test");
+        }
+
+        obj.pubsub.bind("hoge", hoge_1);
+        obj.pubsub.trigger("hoge", {"test" : "test"});
+        obj.pubsub.unbind("hoge", hoge_1);
+        obj.pubsub.trigger("hoge", {"test" : "test"});
+        expect(obj.pubsub.isBinded("hoge", hoge_1)).to.eql(false);
+
+    });
+});
+
+//run
+$(function() {
+    mocha.run();
+});
+-->
+</script>
+</head>
+
+<body>
+    <div id="mocha"></div>
+</body>
+</html>

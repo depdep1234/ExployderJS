@@ -79,6 +79,9 @@ var ModelTemplate = function(data, accessID){
             if(accessID){
                 _accessID = String(accessID);
             };
+
+            //pubsub
+            Ex.PubSub.getInstance().mixin(exports);
             
             _initialized = true;
         },
@@ -95,7 +98,8 @@ var ModelTemplate = function(data, accessID){
                 _saveDataToLocal(key, _records[key], "Tue, 31-Dec-2030 23:59:59; ");
             }
             //dispatch
-            $(exports).trigger(key + "_changed", exports.getRecord(key, String(_accessID)));
+            // $(exports).trigger(key + "_changed", exports.getRecord(key, String(_accessID)));
+            exports.pubsub.trigger(key + "_changed", exports.getRecord(key, String(_accessID)));
         },
         getRecord : function(key, accessID){
             if(!_id)return;
@@ -142,10 +146,12 @@ var ModelTemplate = function(data, accessID){
             }*/
         },
         bind : function(eventName, listener){
-            $(exports).bind(eventName, listener);
+            // $(exports).bind(eventName, listener);
+            exports.pubsub.bind(eventName, listener);
         },
         unbind : function(eventName, listener){
-            $(exports).unbind(eventName, listener);
+            // $(exports).unbind(eventName, listener);
+            exports.pubsub.unbind(eventName, listener);
         },
         sync : function(key, prop){
             if(!_id)return;
